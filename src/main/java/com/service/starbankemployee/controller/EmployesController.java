@@ -17,7 +17,7 @@ public class EmployesController {
     @Autowired
     private EmployeeService employeeService;
 
-    @RequestMapping("/emp2")
+    @GetMapping()
     public List<Employee> getAllEmployees(){
 
         return employeeService.getallemployee();
@@ -39,14 +39,14 @@ public class EmployesController {
 
     @PostMapping
         public ResponseEntity<String> addEmployee(@RequestBody Employee employee){
-            employeeService.saveEmployee(employee);
+            employeeService.createEmployee(employee);
             return  ResponseEntity.ok("Ready Employee Table");
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<String> updateEmployee(@RequestBody Employee employeeDetails,
                                                  @PathVariable Long id){
-      Employee updateEmployee =  employeeService.updateEmployee(id , employeeDetails);
+      Employee updateEmployeess =  employeeService.updateEmployee(id , employeeDetails);
         return  ResponseEntity.ok("Employee Table is Updated");
 
     }
